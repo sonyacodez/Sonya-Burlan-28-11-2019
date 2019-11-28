@@ -1,8 +1,10 @@
-import * as mobx from 'mobx';
+import { observable } from 'mobx';
 
 export class StateStore {
-    @mobx.observable currentCity = '';
+    @observable currentCity = '';
+    @observable favoriteCities = [];
 };
 
+// eslint-disable-next-line new-parens
 export const stateStore = new StateStore;
 export default stateStore;

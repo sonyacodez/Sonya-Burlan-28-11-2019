@@ -1,19 +1,21 @@
 import React from 'react';
-// import { BrowserRouter, Route, Link } from "react-router-dom"
+import { Home } from './components/Home/Home';
+import { Favorites } from './components/Favorites/Favorites';
+import { BrowserRouter, Route, Link } from "react-router-dom"
+
 import './App.css';
-import * as Home from './components/Home';
-import * as AllFavorites from './components/AllFavorites';
 
-const App = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        Hello world!
-        <Home/>
-        <AllFavorites/>
-      </header>
-    </div>
-  );
-};
-
-export default App;
+export const App = () => (
+  <div className="App">
+      <BrowserRouter>
+        <header>
+          <Link to="/">Home</Link>
+          <Link to="/favorites">Favorites</Link>
+        </header>
+        <div>
+          <Route exact path="/" render={() => <Home/>}/>
+          <Route exact path="/favorites" render={() => <Favorites/>} />
+        </div>
+      </BrowserRouter>
+  </div>
+);

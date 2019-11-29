@@ -6,6 +6,7 @@
     "@babel/core": "7.6.0",
     "@material-ui/core": "^4.7.0",
     "@material-ui/icons": "^4.5.1",
+    "@material-ui/lab": "^4.0.0-alpha.33",
     "@svgr/webpack": "4.3.2",
     "@typescript-eslint/eslint-plugin": "^2.2.0",
     "@typescript-eslint/parser": "^2.2.0",
@@ -41,6 +42,7 @@
     "mobx": "^5.15.0",
     "mobx-react": "^6.1.4",
     "mobx-react-devtools": "^6.1.1",
+    "mobx-react-lite": "^1.5.1",
     "optimize-css-assets-webpack-plugin": "5.0.3",
     "pnp-webpack-plugin": "1.5.0",
     "postcss-flexbugs-fixes": "4.1.0",
@@ -135,6 +137,14 @@
     ]
   },
   "babel": {
+    "plugins": [
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ]
+    ],
     "presets": [
       "react-app"
     ]

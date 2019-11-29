@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { SearchCityInput } from './SearchCityInput';
 import { HomeCard } from './HomeCard';
 

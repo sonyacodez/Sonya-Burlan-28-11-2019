@@ -16,6 +16,13 @@ class ToastApiClient {
             toast.error(`Unable to reach server: ${error}`);
         }
     };
+    getFiveDayForecast = async(currentCity, temperatureScalePreference) => {
+        try{
+            return await apiClient.getFiveDayForecast(currentCity, temperatureScalePreference);
+        }catch(error){
+            toast.error(`Unable to reach server: ${error}`);
+        }
+    };
     //maybe displayError function to prevent repetition
 }
 

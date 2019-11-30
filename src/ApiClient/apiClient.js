@@ -3,28 +3,43 @@ import axios from 'axios'
 
 class ApiClient {
     constructor() {
+        this.urlBase = "https://dataservice.accuweather.com/"
         this.myAPIkey = "7piXiklcmUThM1THayaEtmHnRzmqzbVo"; /* I know this isn't good practice to commit the API key, I'm keeping it here for now for simplicity's sake.*/
     }
 
     searchCityAutoCompleteInput = async(userInput) => {
-        const matchingCities = await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${this.myAPIkey}&q=${userInput}`);
+        const matchingCities = await axios.get(`${this.urlBase}locations/v1/cities/autocomplete?apikey=${this.myAPIkey}&q=${userInput}`);
         return matchingCities.data.map(city => city.LocalizedName);
     };
 
     getCurrentCityKey = async(currentCity) => {
-        const currentCityInfo = await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${this.myAPIkey}&q=${currentCity}`);
+        const currentCityInfo = await axios.get(`${this.urlBase}locations/v1/cities/autocomplete?apikey=${this.myAPIkey}&q=${currentCity}`);
         return currentCityInfo.data[0].Key;
     };
     
     getCurrentCityWeather = async(currentCity) => {
         const cityKey = await this.getCurrentCityKey(currentCity);
-        const currentCityInfo = await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${this.myAPIkey}&details=false`);
+        const currentCityInfo = await axios.get(`${this.urlBase}currentconditions/v1/${cityKey}?apikey=${this.myAPIkey}&details=false`);
         const currentCityWeather = currentCityInfo.data[0];
         return {
             weatherDescription: currentCityWeather.WeatherText,
             celsius: currentCityWeather.Temperature.Metric.Value,
             fahrenheit: currentCityWeather.Temperature.Imperial.Value,
         };
+    };
+
+    getFiveDayForecast = async(currentCity, temperatureScalePreference) => {
+        const cityKey = await this.getCurrentCityKey(currentCity);
+        const temperatureScale = temperatureScalePreference === "celsius" ? true : false;
+        const fiveDayForecast = await axios.get(`${this.urlBase}forecasts/v1/daily/5day/${cityKey}?apikey=${this.myAPIkey}&details=false&metric=${temperatureScale}`);
+        return fiveDayForecast.data.DailyForecasts.map(day => {
+            return {
+                weatherDescription: day.Day.IconPhrase,
+                highTemperature: day.Temperature.Maximum.Value,
+                lowTemperature: day.Temperature.Minimum.Value,
+                date: day.Date
+            }
+        });
     };
 
     // getLatLongOfAddress = async(address) => {

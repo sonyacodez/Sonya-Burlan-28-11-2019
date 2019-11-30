@@ -12,19 +12,19 @@ export const CurrentWeather = observer(() => {
     const [ cityWeather, setCityWeather ] = useState({});
     useEffect(() => {
         const fetchCityWeather = async() => {
-            setCityWeather(await toastApiClient.getCurrentCityWeather(cityStore.currentCity))
-        }
-        fetchCityWeather()
-    }, [])
+            setCityWeather(
+                await toastApiClient.getCurrentCityWeather(cityStore.currentCity)
+            );
+        };
+        fetchCityWeather();
+    }, []);
     return (
-        <div>
-            <Paper className={classes.paper}>
-                <div>{cityStore.currentCity}</div>
-                <div>{cityWeather.weatherDescription}</div>
-                <div>{cityWeather.celsius}</div>
-                <div>{cityWeather.fahrenheit}</div>
-            </Paper>
-        </div>
+        <Paper className={classes.paper}>
+            <div>{cityStore.currentCity}</div>
+            <div>{cityWeather.weatherDescription}</div>
+            <div>{cityWeather.celsius}</div>
+            <div>{cityWeather.fahrenheit}</div>
+        </Paper>
     );
 });
 

@@ -11,18 +11,17 @@ class ApiClient {
         return matchingCities.data.map(city => city.LocalizedName);
     };
 
-    getCurrentCityLocationKey = async() => {
-        const city = "Tel Aviv";
-        const currentCityInfo = await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${this.myAPIkey}&q=${city}`);
-        console.log(currentCityInfo.data[0].Key);
+    getCurrentCityKey = async(currentCity) => {
+        const currentCityInfo = await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${this.myAPIkey}&q=${currentCity}`);
+        return currentCityInfo.data[0].Key;
     };
     
-    getCurrentCityWeather = async() => {
-        const cityKey = await this.getCurrentCityLocationKey();
+    getCurrentCityWeather = async(currentCity) => {
+        const cityKey = await this.getCurrentCityKey(currentCity);
         const currentCityInfo = await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${this.myAPIkey}&details=false`);
         const currentCityWeather = currentCityInfo.data[0];
         return {
-            weather: currentCityWeather.WeatherText,
+            weatherDescription: currentCityWeather.WeatherText,
             celsius: currentCityWeather.Temperature.Metric.Value,
             fahrenheit: currentCityWeather.Temperature.Imperial.Value,
         };
@@ -31,8 +30,6 @@ class ApiClient {
     // getLatLongOfAddress = async(address) => {
     //     return await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${this.key}`)
     // }
-
-    // findUser = async(name, email) => await axios.get(`${this.URLname}/existingUser/${name}/${email}`);
 
     // addNewUser = async( name, email, latitude, longitude, address, subscriptionObject) => {
     //     const newUser = {
@@ -47,11 +44,6 @@ class ApiClient {
     //     }
     //     await axios.post(`${this.URLname}/subscribe`, newUser)
     // };
-
-    // updateUser = async(latitude, longitude, address, subscription) => {
-    //     const subscriptionObject = JSON.parse(subscription)
-    //     await axios.put(`${this.URLname}/updateUser/${UserStore.currentUserID}`, { latitude, longitude, address, subscriptionObject })
-    // }
 
     // updateUserLocation = async(latitude, longitude, address) => await axios.put(`${this.URLname}/updateUserLocation/${UserStore.currentUserID}`, { location: {latitude, longitude, address}});
 

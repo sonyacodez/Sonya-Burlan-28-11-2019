@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import apiClient from '../../apiClient';
+import toastApiClient from '../../ApiClient/ToastApiClient';
 import { observer } from "mobx-react-lite";
 import TextField from '@material-ui/core/TextField';
 import CityStoreContext from '../../stores/CityStore';
@@ -12,13 +12,13 @@ export const SearchCityInput = observer(() => {
         <Autocomplete
             autoComplete={true}
             disableOpenOnFocus={true}
-            options={citySuggestions}
+            options={citySuggestions || []}
             getOptionLabel={option => option}
             onInputChange={async(e) => {
                 if(e){
-                    setCitySuggestions(await apiClient.searchCityAutoCompleteInput(e.target.value))
+                    setCitySuggestions(await toastApiClient.searchCityAutoCompleteInput(e.target.value));
                 }else{
-                    setCitySuggestions([])
+                    setCitySuggestions([]);
                 }
             }}
             onChange={(e, value) => cityStore.currentCity = value}

@@ -9,9 +9,9 @@ class ToastApiClient {
             toast.error(`This city does not exist. Please type in a valid city name.`);
         }
     };
-    getCurrentCityWeather = async() => {
+    getCurrentCityWeather = async(currentCity) => {
         try{
-            return await apiClient.getCurrentCityWeather();
+            return await apiClient.getCurrentCityWeather(currentCity);
         }catch(error){
             toast.error(`Unable to reach server: ${error}`);
         }

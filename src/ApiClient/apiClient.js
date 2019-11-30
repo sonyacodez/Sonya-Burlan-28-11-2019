@@ -42,6 +42,10 @@ class ApiClient {
         });
     };
 
+    getCurrentCityWeatherPhoto = async(currentCity) => {
+        return await axios.get(`https://source.unsplash.com/featured/?${currentCity}`);
+    };
+
     // getLatLongOfAddress = async(address) => {
     //     return await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${this.key}`)
     // }

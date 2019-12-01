@@ -4,7 +4,9 @@ import axios from 'axios'
 class ApiClient {
     constructor() {
         this.urlBase = "https://dataservice.accuweather.com/"
-        this.myAPIkey = "7piXiklcmUThM1THayaEtmHnRzmqzbVo"; /* I know this isn't good practice to commit the API key, I'm keeping it here for now for simplicity's sake.*/
+        this.myAPIkey = "4xF5yjmrtLcEEkPmGZr7eyi93iQLrNAk"; 
+        this.accessKey = "2c68386b32d6b46ea4dde87b3753597e29be3b00804ea5b7ed42b91dc9fb2dca";
+        /* I know this isn't good practice to commit the API key/accesskey, I'm keeping it here for now for simplicity's sake.*/
     }
 
     searchCityAutoCompleteInput = async(userInput) => {
@@ -37,14 +39,16 @@ class ApiClient {
                 weatherDescription: day.Day.IconPhrase,
                 highTemperature: day.Temperature.Maximum.Value,
                 lowTemperature: day.Temperature.Minimum.Value,
-                date: day.Date
+                date: day.Date,
+                cityName: currentCity
             }
         });
     };
 
-    getCurrentCityWeatherPhoto = async(currentCity) => {
-        return await axios.get(`https://source.unsplash.com/featured/?${currentCity}`);
-    };
+    // getCurrentCityWeatherPhoto = async(currentCity) => {
+    //     return await axios.get(`https://api.unsplash.com/client_id=${this.accessKey}/photos/${currentCity}`);
+    // };
+
 
     // getLatLongOfAddress = async(address) => {
     //     return await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${this.key}`)

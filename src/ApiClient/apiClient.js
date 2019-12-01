@@ -46,7 +46,7 @@ class ApiClient {
     };
 
     getCurrentCityWeatherPhoto = async() => {
-        const cityPhoto = await axios.get(`https://source.unsplash.com/1920x1080/?beautiful+nature+sunsets+sunrises`);
+        const cityPhoto = await axios.get(`https://source.unsplash.com/1920x1080/?beautiful+nature+sunrises+sunsets+green`);
         return cityPhoto.config.url
     };
 

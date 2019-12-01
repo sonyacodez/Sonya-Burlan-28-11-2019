@@ -2,9 +2,11 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Paper } from '@material-ui/core';
 import { observer } from "mobx-react-lite";
+import { FavoriteButton } from '../../Buttons/FavoriteButton';
 import { makeStyles } from '@material-ui/core/styles';
 import CityStoreContext from '../../../stores/CityStore';
 import toastApiClient from '../../../ApiClient/ToastApiClient';
+import { UnFavoriteButton } from '../../Buttons/UnFavoriteButton';
 
 export const CurrentWeather = observer(() => {
     const classes = useStyles();
@@ -19,12 +21,17 @@ export const CurrentWeather = observer(() => {
         fetchCityWeather();
     }, []);
     return (
-        <Paper className={classes.paper}>
-            <div>{cityStore.currentCity}</div>
-            <div>{cityWeather.weatherDescription}</div>
-            <div>{cityWeather.celsius}</div>
-            <div>{cityWeather.fahrenheit}</div>
-        </Paper>
+        <div>
+            <Paper className={classes.paper}>
+                <div>{cityStore.currentCity}</div>
+                <div>{cityWeather.weatherDescription}</div>
+                <div>{cityWeather.celsius}</div>
+                <div>{cityWeather.fahrenheit}</div>
+            </Paper>
+            {cityStore.favoriteCities.includes(cityStore.currentCity) ?
+            <UnFavoriteButton cityName={cityStore.currentCity}/> : 
+            <FavoriteButton cityName={cityStore.currentCity}/>}
+        </div>
     );
 });
 

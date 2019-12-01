@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useState, useEffect } from 'react';
 import { Paper } from '@material-ui/core';
 import { observer } from "mobx-react-lite";
@@ -12,14 +11,18 @@ export const CurrentWeather = observer(() => {
     const classes = useStyles();
     const cityStore = useContext(CityStoreContext);
     const [ cityWeather, setCityWeather ] = useState({});
+    const [ currentCity,setCurrentCity ] = useState(undefined);
     useEffect(() => {
         const fetchCityWeather = async() => {
             setCityWeather(
                 await toastApiClient.getCurrentCityWeather(cityStore.currentCity)
             );
         };
-        fetchCityWeather();
-    }, []);
+        if(currentCity !== cityStore.currentCity){
+            fetchCityWeather();
+            setCurrentCity(cityStore.currentCity);
+        }
+    }, [currentCity, cityStore.currentCity]);
     return (
         <div>
             <Paper className={classes.paper}>

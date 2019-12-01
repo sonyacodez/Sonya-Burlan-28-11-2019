@@ -16,15 +16,16 @@ export const FiveDayForecast = observer(() => {
             );
         };
         fetchFiveDayForecast();
-    }, []);
+    }, [cityStore]);
     return (
         <div>
-            {fiveDayForecast.map(day => (
-                <Paper className={classes.paper}>
+            {fiveDayForecast.map((day, index) => (
+                <Paper key={index} className={classes.paper}>
                     <div>{day.weatherDescription}</div>
                     <div>{day.highTemperature}</div>
                     <div>{day.lowTemperature}</div>
                     <div>{day.date}</div>
+                    <div>{day.cityName}</div>
                 </Paper>
             ))}
         </div>

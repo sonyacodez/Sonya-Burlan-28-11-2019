@@ -4,7 +4,8 @@ import apiClient from './ApiClient/apiClient';
 import { Home } from "./components/Home/Home";
 import { ToastContainer } from "react-toastify";
 import { Favorites } from "./components/Favorites/Favorites";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
+import { Header } from "../src/components/Header";
 
 import "./App.css";
 
@@ -20,8 +21,7 @@ export const App = observer(() => {
         <div className="App" style={{ backgroundImage: `url(${imageUrl})`, height: "100%" }}>
             <BrowserRouter>
                 <header>
-                    <Link to="/">Home</Link>
-                    <Link to="/favorites">Favorites</Link>
+                    <Header/>
                 </header>
                 <div>
                     <Route exact path="/" render={() => <Home />} />

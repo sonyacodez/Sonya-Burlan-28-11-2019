@@ -6,10 +6,12 @@ import { ToastContainer } from "react-toastify";
 import { Favorites } from "./components/Favorites/Favorites";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Header } from "../src/components/Header";
+import { makeStyles } from '@material-ui/core';
 
 import "./App.css";
 
 export const App = observer(() => {
+    const classes = useStyles();
     const [ imageUrl, setImageUrl ] = useState(async()=>{await apiClient.getCurrentCityWeatherPhoto()});
     useEffect(() => {
         const fetchBackgroundPhoto = async() => {
@@ -18,12 +20,12 @@ export const App = observer(() => {
         fetchBackgroundPhoto();
     }, []);
     return (
-        <div className="App" style={{ backgroundImage: `url(${imageUrl})`, height: "100%" }}>
+        <div id="App" className={classes.root} style={{ backgroundImage: `url(${imageUrl})` }}>
             <BrowserRouter>
                 <header>
                     <Header/>
                 </header>
-                <div>
+                <div id="route" className={classes.route}>
                     <Route exact path="/" render={() => <Home />} />
                     <Route exact path="/favorites" render={() => <Favorites />} />
                 </div>
@@ -32,3 +34,14 @@ export const App = observer(() => {
         </div>
     );
 });
+
+const useStyles = makeStyles(() => ({
+    root: {
+        height: "100%",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat"
+    },
+    route: {
+        paddingTop: "64px"
+    }
+}));

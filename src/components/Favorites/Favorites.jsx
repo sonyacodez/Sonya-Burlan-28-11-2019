@@ -1,31 +1,30 @@
-import React from "react";
-import { Grid, Paper } from '@material-ui/core';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useContext } from "react";
+import { Grid } from '@material-ui/core';
+import { observer } from "mobx-react-lite";
+import CityStoreContext from '../../stores/CityStore';
 import { makeStyles } from '@material-ui/core/styles';
-// import { SingleFavorite } from './SingleFavorite';
+import { SingleFavorite } from './SingleFavorite';
 
-export const Favorites = () => {
+export const Favorites = observer(() => {
     const classes = useStyles();
+    const cityStore = useContext(CityStoreContext);
     return (
         <Grid container className={classes.root} spacing={2}>
             <Grid item xs={12}>
                 <Grid container justify="center" spacing={2}>
-                    {[0, 1, 2].map(value => (
-                        <Grid key={value} item>
-                            <Paper className={classes.paper} />
-                        </Grid>
+                    {cityStore.favoriteCities.map((city, index) => (
+                        <SingleFavorite key={index} id={index} cityName={city}/>
                     ))}
                 </Grid>
             </Grid>
         </Grid>
     );
-};
+});
+
 
 const useStyles = makeStyles(() => ({
     root: {
       flexGrow: 1
-    },
-    paper: {
-      height: 200,
-      width: 300
     }
 }));

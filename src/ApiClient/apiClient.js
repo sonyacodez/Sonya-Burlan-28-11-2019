@@ -45,9 +45,10 @@ class ApiClient {
         });
     };
 
-    // getCurrentCityWeatherPhoto = async(currentCity) => {
-    //     return await axios.get(`https://api.unsplash.com/client_id=${this.accessKey}/photos/${currentCity}`);
-    // };
+    getCurrentCityWeatherPhoto = async() => {
+        const cityPhoto = await axios.get(`https://source.unsplash.com/1920x1080/?beautiful+nature+sunsets+sunrises`);
+        return cityPhoto.config.url
+    };
 
 
     // getLatLongOfAddress = async(address) => {

@@ -14,7 +14,7 @@ export const SearchCityInput = observer(() => {
             disableOpenOnFocus={true}
             options={citySuggestions || []}
             getOptionLabel={option => option}
-            onInputChange={async(e) => {
+            onInputChange={async(e, value) => {
                 if(e){
                     setCitySuggestions(await toastApiClient.searchCityAutoCompleteInput(e.target.value));
                 }else{
@@ -22,7 +22,19 @@ export const SearchCityInput = observer(() => {
                 }
             }}
             onChange={(e, value) => cityStore.currentCity = value}
-            renderInput={params => <TextField {...params} variant="outlined" fullWidth/>}
+            renderInput={(params) => 
+                <TextField {...params} variant="outlined" fullWidth
+                    onChange={event=>{
+                        const userInput = event.target.value;
+                        const sanitized = userInput.replace(/[^a-z 0-9]/gi, "");
+                        if(userInput !== sanitized){
+                            alert("Please use english letters only.");
+                            return;
+                        }
+                        params.inputProps.onChange(event);
+                    }}
+                />
+            }
         />
     );
 });

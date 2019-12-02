@@ -22,7 +22,6 @@ class ApiClient {
             navigator.geolocation.getCurrentPosition(async (pos) => {
                 const address = await this.getDecodedAddress(pos.coords.latitude, pos.coords.longitude)
                 const city = address.data.results[0].formatted_address.split(",")[1].trim("");
-                console.log(city);
                 resolve(city);
             },
             (error)=>{

@@ -37,6 +37,7 @@ export const App = observer(() => {
 
 const useStyles = makeStyles(() => ({
     root: {
+        overflowX: "hidden",
         height: "100%",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat"

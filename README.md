@@ -7,9 +7,11 @@
 - Unsplash API
 - Google Geolocation API
 - AccuWeather API
-- Font Awesome npm package
+- Font Awesome NPM package
 
-###### Home Page
+#### Heroku Link: https://serene-hamlet-17640.herokuapp.com/
+
+##### Home Page
 ![alt text](screen_shots/HomePage.png "Home Page")
-###### Favorites Page
+##### Favorites Page
 ![alt text](screen_shots/FavoritesPage.png "Favorites Page")

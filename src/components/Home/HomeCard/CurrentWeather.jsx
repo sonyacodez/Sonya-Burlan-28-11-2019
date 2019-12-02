@@ -40,7 +40,8 @@ export const CurrentWeather = observer(() => {
 
 const useStyles = makeStyles(() => ({
     paper: {
-        height: 300,
-        width: 500
+        width: "100%",
+        height: "20vh",
+        borderRadius: "40px"
     }
 }));

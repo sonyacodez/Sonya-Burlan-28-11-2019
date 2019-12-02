@@ -23,7 +23,7 @@ export const SingleFavorite = observer(({id, cityName}) => {
     return (
         <Grid item>
             <Link to="/">
-                <Paper id={id} className={classes.paper} onClick={updateCurrentCity}>
+                <Paper id={id} className={classes.card} onClick={updateCurrentCity}>
                     <div>{cityName}</div>
                     <div>{favCityWeather[temperatureScale]}</div>
                     <div>{favCityWeather.weatherDescription}</div>
@@ -35,8 +35,17 @@ export const SingleFavorite = observer(({id, cityName}) => {
 });
 
 const useStyles = makeStyles(() => ({
-    paper: {
-      height: 200,
-      width: 300
+    card: {
+        width: "100%",
+        height: "150%",
+        margin: "5%",
+        borderRadius: "40px",
+        boxShadow: "5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22)",
+        '&:hover': {
+            transform: "scale(0.9, 0.9)",
+            boxShadow: "5px 5px 30px 15px rgba(0,0,0,0.25), -5px -5px 30px 15px rgba(0,0,0,0.22)"
+        },
+        cursor: "pointer",
+        transition: "0.4s"
     }
 }));

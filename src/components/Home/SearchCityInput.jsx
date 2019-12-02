@@ -1,15 +1,17 @@
 import React, { useContext, useState } from "react";
 import toastApiClient from '../../ApiClient/ToastApiClient';
 import { observer } from "mobx-react-lite";
-import TextField from '@material-ui/core/TextField';
+import { TextField, makeStyles } from '@material-ui/core';
 import CityStoreContext from '../../stores/CityStore';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
 export const SearchCityInput = observer(() => {
+    const classes = useStyles();
     const cityStore = useContext(CityStoreContext);
     const [ citySuggestions, setCitySuggestions ] = useState([]);
     return (
         <Autocomplete
+            className={classes.root}
             autoComplete={true}
             disableOpenOnFocus={true}
             options={citySuggestions || []}
@@ -23,7 +25,10 @@ export const SearchCityInput = observer(() => {
             }}
             onChange={(e, value) => cityStore.currentCity = value}
             renderInput={(params) => 
-                <TextField {...params} variant="outlined" fullWidth
+                <TextField
+                    fullWidth
+                    {...params}
+                    variant="outlined"
                     onChange={event=>{
                         const userInput = event.target.value;
                         const sanitized = userInput.replace(/[^a-z 0-9]/gi, "");
@@ -38,3 +43,14 @@ export const SearchCityInput = observer(() => {
         />
     );
 });
+
+const useStyles = makeStyles(() => ({
+    root: {
+        flexGrow: 1,
+        width: "30%",
+        height: "5%",
+        paddingTop: "8%",
+        paddingBottom: "5%",
+        marginLeft: "35%"
+    }
+}));

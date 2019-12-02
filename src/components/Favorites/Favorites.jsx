@@ -12,9 +12,9 @@ export const Favorites = observer(() => {
     return (
         <Grid container className={classes.root} spacing={2}>
             <Grid item xs={12}>
-                <Grid container justify="center" spacing={2}>
+                <Grid className={classes.cardsList} container justify="center" spacing={2}>
                     {cityStore.favoriteCities.map((city, index) => (
-                        <SingleFavorite key={index} id={index} cityName={city}/>
+                        <SingleFavorite hover={true} key={index} id={index} cityName={city}/>
                     ))}
                 </Grid>
             </Grid>
@@ -26,5 +26,12 @@ export const Favorites = observer(() => {
 const useStyles = makeStyles(() => ({
     root: {
       flexGrow: 1
+    },
+    cardsList: {
+        zIndex: 0,
+        width: "100%",
+        display: "flex",
+        justifyContent: "space-around",
+        flexWrap: "wrap"
     }
-}));
+}))

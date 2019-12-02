@@ -53,7 +53,7 @@ const useStyles = makeStyles(() => ({
     root: {
         display: "flex",
         flexWrap: "wrap",
-        justifyContent: "space-evenly"
+        justifyContent: "space-between"
     },
     temperature: {
         fontSize: "12vh",

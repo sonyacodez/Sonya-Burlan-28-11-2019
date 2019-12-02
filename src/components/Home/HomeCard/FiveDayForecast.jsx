@@ -1,59 +1,38 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { observer } from "mobx-react-lite";
-import { makeStyles, Paper, Grid } from '@material-ui/core';
-import CityStoreContext from '../../../stores/CityStore';
+import { makeStyles, Grid } from '@material-ui/core';
+import StateStoreContext from '../../../stores/StateStore';
 import toastApiClient from '../../../ApiClient/ToastApiClient';
-import {
-    faSun,
-    faWind,
-    faBolt, 
-    faSnowflake,
-    faCloudSun, 
-    faCloudShowersHeavy
-} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const FiveDayForecast = observer(() => {
     const classes = useStyles();
-    const cityStore = useContext(CityStoreContext);
+    const stateStore = useContext(StateStoreContext);
     const [ currentCity, setCurrentCity ] = useState(undefined);
     const [ fiveDayForecast, setFiveDayForecast ] = useState([]);
-    const daysOfWeek = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
-    const whichDay = unformattedDate => daysOfWeek[new Date(unformattedDate).getDay()];
-    const weatherIcon = text => {
-        return text.toLowerCase().includes("cloud") ? faCloudSun :
-        text.toLowerCase().includes("rain") ? faCloudShowersHeavy :
-        text.toLowerCase().includes("thunder") ? faBolt :
-        text.toLowerCase().includes("snow") ? faSnowflake :
-        text.toLowerCase().includes("sun") ? faSun :
-        text.toLowerCase().includes("wind") ? faWind :
-        null;
-    };
     useEffect(() => {
         const fetchFiveDayForecast = async() => {
             setFiveDayForecast(
-                await toastApiClient.getFiveDayForecast(cityStore.currentCity, cityStore.temperatureScale)
+                await toastApiClient.getFiveDayForecast(stateStore.currentCity, stateStore.temperatureScale)
             );
         };
-        if(cityStore.currentCity !== currentCity){
+        if(stateStore.currentCity !== currentCity){
             fetchFiveDayForecast();
-            setCurrentCity(cityStore.currentCity);
+            setCurrentCity(stateStore.currentCity);
         }
-    }, [currentCity, cityStore.currentCity, cityStore.temperatureScale]);
+    }, [currentCity, stateStore.currentCity, stateStore.temperatureScale]);
     return (
-        <Grid container spacing={1}>
+        <Grid container className={classes.root} spacing={1}>
             {fiveDayForecast.map((day, index) => (
-                <Grid className={classes.root} item xs>
+                <Grid item xs={12} key={index} className={classes.fiveDayForecast}>
                     <div className={classes.fiveDayForecast}>
-                        <Paper key={index} className={classes.paper}>
-                            <div>{whichDay(day.date)}</div>
-                            <FontAwesomeIcon size="5x" icon={weatherIcon(day.weatherDescription)}/>
-                            <div>
-                                <span className={classes.highTemperature}>{day.highTemperature}</span>
-                                <span className={classes.separator}> / </span>
-                                <span className={classes.lowTemperature}>{day.lowTemperature}</span>
-                            </div>
-                        </Paper>
+                        <div>{stateStore.whichDay(day.date)}</div>
+                        <div><FontAwesomeIcon size="5x" icon={stateStore.whichWeatherIcon(day.weatherDescription)}/></div>
+                        <div>
+                            <span className={classes.highTemperature}>{day.highTemperature}°</span>
+                            <span className={classes.separator}> / </span>
+                            <span className={classes.lowTemperature}>{day.lowTemperature}°</span>
+                        </div>
                     </div>
                 </Grid>
             ))}
@@ -63,17 +42,18 @@ export const FiveDayForecast = observer(() => {
 
 const useStyles = makeStyles(() => ({
     root: {
-        display: "flex"
+        display: "grid",
+        gridTemplateColumns: "5fr 5fr 5fr 5fr 5fr",
+        gridRowGap: "1em"
     },
     fiveDayForecast: {
         padding: "1.3vmin",
-        flexDirection: "column",
-        justifyContent: "center"
-    },
-    paper: {
-        height: '22vh',
         borderRadius: "40px",
-        fontSize: "2.3vh"
+        fontSize: "2.3vh",
+        textAlign: "center",
+        '& div': {
+            paddingBottom: "1vh"
+        }
     },
     highTemperature: {
         color: "red"

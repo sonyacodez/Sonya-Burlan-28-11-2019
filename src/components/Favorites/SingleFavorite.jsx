@@ -44,6 +44,7 @@ export const SingleFavorite = observer(({id, cityName}) => {
 const useStyles = makeStyles(() => ({
     card: {
         display: "grid",
+        position: "relative",
         gridTemplateColumns: "4fr 0.4fr",
         height: "30vh",
         margin: "5%",
@@ -60,7 +61,9 @@ const useStyles = makeStyles(() => ({
     cardInfo: {
         display: "grid",
         gridTemplateRows: "0.5fr 1.5fr 1fr",
-        alignItems: "center"
+        alignItems: "center",
+        color: "black",
+        textDecoration: "none"
     },
     title: {
         fontSize: "2.3vw",
@@ -76,8 +79,9 @@ const useStyles = makeStyles(() => ({
         textAlign: "center"
     },
     button: {
-        fontSize: "5vw",
-        textAlign: "center",
-        paddingLeft: 0
+        position: "absolute",
+        bottom: "2.5%",
+        right: "2.5%",
+        textAlign: "center"
     }
 }));

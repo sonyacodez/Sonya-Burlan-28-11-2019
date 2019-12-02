@@ -1,25 +1,31 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { AppBar, IconButton, makeStyles, Toolbar } from '@material-ui/core';
-import { faHeart, faHome } from '@fortawesome/free-solid-svg-icons';
+import { AppBar, IconButton, makeStyles, Toolbar, Tooltip } from '@material-ui/core';
+import { faHeart, faHome} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const Header = () => {
     const classes = useStyles()
     return (
-        <AppBar>
-            <Toolbar>
-                <h3 className={classes.title}>Weather App</h3>
-                <IconButton className={classes.iconButton}>
-                    <Link to="/favorites">
-                        <FontAwesomeIcon icon={faHeart} color="red" />
-                    </Link>
-                </IconButton>
-                <IconButton className={classes.iconButton} color="inherit">
-                    <Link to="/">
-                        <FontAwesomeIcon icon={faHome} color="black" />
-                    </Link>
-                </IconButton>
+        <AppBar className={classes.root}>
+            <Toolbar className={classes.toolbar}>
+                <h3>Weather App</h3>
+                <span>
+                    <Tooltip title="Favorites">
+                        <IconButton className={classes.iconButton}>
+                            <Link to="/favorites">
+                                <FontAwesomeIcon icon={faHeart} color="red" />
+                            </Link>
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Home">
+                        <IconButton className={classes.iconButton}>
+                            <Link to="/">
+                                <FontAwesomeIcon icon={faHome} color="black" />
+                            </Link>
+                        </IconButton>
+                    </Tooltip>
+                </span>
             </Toolbar>
         </AppBar>
     );
@@ -28,18 +34,12 @@ export const Header = () => {
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
-        display: "flex-inline"
-    },
-    title: {
-        display: 'flex',
-        justifyContent: 'flex-start'
-    },
-    toolbar: {
-        opacity: 15,
-        display: 'flex',
-        justifyContent: 'flex-end'
+        display: "flex"
     },
     iconButton: {
         size: "medium"
+    },
+    toolbar: {
+        justifyContent: "space-between"
     }
 }));

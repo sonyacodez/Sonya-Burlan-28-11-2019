@@ -29,7 +29,7 @@ export const SearchCityInput = observer(() => {
                     fullWidth
                     {...params}
                     variant="outlined"
-                    placeholder="Which city's weather would you like to check?"
+                    placeholder="Search City..."
                     onChange={event=>{
                         const userInput = event.target.value;
                         const sanitized = userInput.replace(/[^a-z 0-9]/gi, "");
@@ -47,11 +47,16 @@ export const SearchCityInput = observer(() => {
 
 const useStyles = makeStyles(() => ({
     root: {
+        ['@media (min-width:800px)']: { // eslint-disable-line no-useless-computed-key
+            width: '30%'
+        },
+        ['@media (max-width:800px)']: { // eslint-disable-line no-useless-computed-key
+            width: '240px'
+        },
         flexGrow: 1,
-        width: "30%",
         height: "5%",
         paddingTop: "8%",
         paddingBottom: "5%",
-        marginLeft: "35%"
+        margin: "0 auto"
     }
 }));

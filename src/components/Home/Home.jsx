@@ -16,7 +16,7 @@ export const Home = () => {
 const useStyles = makeStyles(() => ({
     root: {
         display: "flex-inline",
-        '& input' : {
+        '& .MuiOutlinedInput-root': {
             backgroundColor: "white",
             padding: 0
         }

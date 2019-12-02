@@ -1,31 +1,34 @@
 import React from 'react';
 import { CurrentWeather } from './CurrentWeather';
 import { FiveDayForecast } from './FiveDayForecast';
-import { Grid, Paper, makeStyles } from '@material-ui/core';
+import { Paper, Divider, makeStyles } from '@material-ui/core';
 
 export const HomeCard = () => {
     const classes = useStyles();
     return (
-        <Grid className={classes.root} container spacing={0}>
-            <Grid item xs={12}>
-                <Grid container justify="center" spacing={2}>
-                    <Paper className={classes.paper}>
-                        <CurrentWeather/>
-                        <FiveDayForecast/>
-                    </Paper>
-                </Grid>
-            </Grid>
-        </Grid>
+        <div className={classes.root}>
+            <Paper className={classes.paper}>
+                <CurrentWeather/>
+                <Divider className={classes.divider} variant="middle"/>
+                <FiveDayForecast/>
+            </Paper>
+        </div>
     );
 };
 
 const useStyles = makeStyles(() => ({
     root: {
-        display: "grid"
+        display: "grid",
+        width: "70vw",
+        margin: "0 auto"
     },
     paper: {
         opacity: 0.75,
         borderRadius: "40px",
         boxShadow: "5px 5px 30px 7px rgba(255,255,255,1), -5px -5px 30px 7px rgba(255,255,255,1)"
+    },
+    divider: {
+        marginTop: "1.5vh",
+        marginBottom: "1.5vh"
     }
 }));

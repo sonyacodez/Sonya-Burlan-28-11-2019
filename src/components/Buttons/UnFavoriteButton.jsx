@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export const UnFavoriteButton = observer(({cityName}) => {
     const stateStore = useContext(StateStoreContext);
     return (
-        <Tooltip title="Delete from Favorites">
+        <Tooltip title="Remove from Favorites">
             <IconButton onClick={() => stateStore.deleteFavoriteCity(cityName)}>
                 <FontAwesomeIcon icon={faHeart} color="red" />
             </IconButton>

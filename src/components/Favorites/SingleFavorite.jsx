@@ -2,11 +2,13 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { observer } from "mobx-react-lite";
-import { Grid, Paper } from '@material-ui/core';
+import { Paper } from '@material-ui/core';
 import StateStoreContext from '../../stores/StateStore';
 import { makeStyles } from '@material-ui/core/styles';
 import toastApiClient from "../../ApiClient/ToastApiClient";
 import { UnFavoriteButton } from "../Buttons/UnFavoriteButton";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import staticData from '../../staticData';
 
 export const SingleFavorite = observer(({id, cityName}) => {
     const classes = useStyles();
@@ -21,23 +23,29 @@ export const SingleFavorite = observer(({id, cityName}) => {
     }, []);
     const updateCurrentCity = () => stateStore.currentCity = cityName;
     return (
-        <Grid item>
-            <Link to="/">
-                <Paper id={id} className={classes.card} onClick={updateCurrentCity}>
-                    <div>{cityName}</div>
-                    <div>{favCityWeather[temperatureScale]}</div>
-                    <div>{favCityWeather.weatherDescription}</div>
-                </Paper>
-            </Link>
-            <UnFavoriteButton cityName={cityName}/>
-        </Grid>
+        <div>
+            <Paper id={id} className={classes.card} onClick={updateCurrentCity}>
+                <Link to="/" className={classes.cardInfo}>
+                    <div className={classes.title}>{cityName}</div>
+                    <div className={classes.icon}>
+                        <FontAwesomeIcon size="4x" 
+                            icon={staticData.whichWeatherIcon(favCityWeather.weatherDescription || "")}/>
+                    </div>
+                    <div className={classes.temperature}>{favCityWeather[temperatureScale]}°</div>
+                </Link>
+                <div className={classes.button}>
+                    <UnFavoriteButton cityName={cityName}/>
+                </div>
+            </Paper>
+        </div>
     );
 });
 
 const useStyles = makeStyles(() => ({
     card: {
-        width: "100%",
-        height: "150%",
+        display: "grid",
+        gridTemplateColumns: "4fr 0.4fr",
+        height: "30vh",
         margin: "5%",
         borderRadius: "40px",
         boxShadow: "5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22)",
@@ -46,6 +54,30 @@ const useStyles = makeStyles(() => ({
             boxShadow: "5px 5px 30px 15px rgba(0,0,0,0.25), -5px -5px 30px 15px rgba(0,0,0,0.22)"
         },
         cursor: "pointer",
-        transition: "0.4s"
+        transition: "0.4s",
+        opacity: 0.75
+    },
+    cardInfo: {
+        display: "grid",
+        gridTemplateRows: "0.5fr 1.5fr 1fr",
+        alignItems: "center"
+    },
+    title: {
+        fontSize: "2.3vw",
+        textAlign: "center",
+        paddingTop: "1vh",
+        paddingBottom: "1vh"
+    },
+    temperature: {
+        textAlign: "center",
+        fontSize: "2.3vw"
+    },
+    icon: {
+        textAlign: "center"
+    },
+    button: {
+        fontSize: "5vw",
+        textAlign: "center",
+        paddingLeft: 0
     }
 }));

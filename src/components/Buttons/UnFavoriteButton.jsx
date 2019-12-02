@@ -1,14 +1,17 @@
 import React, { useContext } from "react";
-
 import { observer } from "mobx-react-lite";
-import { Button } from '@material-ui/core';
-import CityStoreContext from '../../stores/CityStore';
+import StateStoreContext from '../../stores/StateStore';
+import { Tooltip, IconButton } from '@material-ui/core';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const UnFavoriteButton = observer(({cityName}) => {
-    const cityStore = useContext(CityStoreContext);
+    const stateStore = useContext(StateStoreContext);
     return (
-        <Button onClick={() => cityStore.deleteFavoriteCity(cityName)} >
-            Delete from Favorites
-        </Button>
+        <Tooltip title="Delete from Favorites">
+            <IconButton onClick={() => stateStore.deleteFavoriteCity(cityName)}>
+                <FontAwesomeIcon icon={faHeart} color="red" />
+            </IconButton>
+        </Tooltip>
     );
 });

@@ -16,27 +16,31 @@ export const Header = observer(() => {
                 <h3>Weather App</h3>
                 <span>
                     <Tooltip title="Change Temperature to Celsius">
-                        <IconButton className={classes.degreeType}
-                                disabled={stateStore.temperatureScale === "celsius" ? true : false}
-                                onClick={() => {
-                                    stateStore.temperatureScale === "celsius" ? 
-                                    stateStore.temperatureScale = "fahrenheit" : 
-                                    stateStore.temperatureScale = "celsius"
-                                }}>
-                            °C
-                        </IconButton>
+                        <span>
+                            <IconButton className={classes.degreeType}
+                                    disabled={stateStore.temperatureScale === "celsius" ? true : false}
+                                    onClick={() => {
+                                        stateStore.temperatureScale === "celsius" ? 
+                                        stateStore.temperatureScale = "fahrenheit" : 
+                                        stateStore.temperatureScale = "celsius"
+                                    }}>
+                                °C
+                            </IconButton>
+                        </span>
                     </Tooltip>
                     <span className={classes.spliter}> | </span>
                     <Tooltip title="Change Temperature to Fahrenheit">
-                        <IconButton className={classes.degreeType}
-                                disabled={stateStore.temperatureScale === "fahrenheit" ? true : false}
-                                onClick={() => {
-                                    stateStore.temperatureScale === "celsius" ? 
-                                    stateStore.temperatureScale = "fahrenheit" : 
-                                    stateStore.temperatureScale = "celsius"
-                                }}>
-                            °F
-                        </IconButton>
+                        <span>
+                            <IconButton className={classes.degreeType}
+                                    disabled={stateStore.temperatureScale === "fahrenheit" ? true : false}
+                                    onClick={() => {
+                                        stateStore.temperatureScale === "celsius" ? 
+                                        stateStore.temperatureScale = "fahrenheit" : 
+                                        stateStore.temperatureScale = "celsius"
+                                    }}>
+                                °F
+                            </IconButton>
+                        </span>
                     </Tooltip>
                     <Tooltip title="Favorites">
                         <IconButton className={classes.iconButton}>

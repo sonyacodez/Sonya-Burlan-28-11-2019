@@ -3,37 +3,37 @@ import { Paper } from '@material-ui/core';
 import { observer } from "mobx-react-lite";
 import { FavoriteButton } from '../../Buttons/FavoriteButton';
 import { makeStyles } from '@material-ui/core/styles';
-import CityStoreContext from '../../../stores/CityStore';
+import StateStoreContext from '../../../stores/StateStore';
 import toastApiClient from '../../../ApiClient/ToastApiClient';
 import { UnFavoriteButton } from '../../Buttons/UnFavoriteButton';
 
 export const CurrentWeather = observer(() => {
     const classes = useStyles();
-    const cityStore = useContext(CityStoreContext);
+    const stateStore = useContext(StateStoreContext);
     const [ cityWeather, setCityWeather ] = useState({});
     const [ currentCity,setCurrentCity ] = useState(undefined);
     useEffect(() => {
         const fetchCityWeather = async() => {
             setCityWeather(
-                await toastApiClient.getCurrentCityWeather(cityStore.currentCity)
+                await toastApiClient.getCurrentCityWeather(stateStore.currentCity)
             );
         };
-        if(currentCity !== cityStore.currentCity){
+        if(currentCity !== stateStore.currentCity){
             fetchCityWeather();
-            setCurrentCity(cityStore.currentCity);
+            setCurrentCity(stateStore.currentCity);
         }
-    }, [currentCity, cityStore.currentCity]);
+    }, [currentCity, stateStore.currentCity]);
     return (
         <div>
             <Paper className={classes.paper}>
-                <div>{cityStore.currentCity}</div>
+                <div>{stateStore.currentCity}</div>
                 <div>{cityWeather.weatherDescription}</div>
                 <div>{cityWeather.celsius}</div>
                 <div>{cityWeather.fahrenheit}</div>
             </Paper>
-            {cityStore.favoriteCities.includes(cityStore.currentCity) ?
-            <UnFavoriteButton cityName={cityStore.currentCity}/> : 
-            <FavoriteButton cityName={cityStore.currentCity}/>}
+            {stateStore.favoriteCities.includes(stateStore.currentCity) ?
+            <UnFavoriteButton cityName={stateStore.currentCity}/> : 
+            <FavoriteButton cityName={stateStore.currentCity}/>}
         </div>
     );
 });

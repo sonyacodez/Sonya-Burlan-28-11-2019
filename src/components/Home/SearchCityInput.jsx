@@ -2,12 +2,12 @@ import React, { useContext, useState } from "react";
 import toastApiClient from '../../ApiClient/ToastApiClient';
 import { observer } from "mobx-react-lite";
 import { TextField, makeStyles } from '@material-ui/core';
-import CityStoreContext from '../../stores/CityStore';
+import StateStoreContext from '../../stores/StateStore';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
 export const SearchCityInput = observer(() => {
     const classes = useStyles();
-    const cityStore = useContext(CityStoreContext);
+    const stateStore = useContext(StateStoreContext);
     const [ citySuggestions, setCitySuggestions ] = useState([]);
     return (
         <Autocomplete
@@ -23,7 +23,7 @@ export const SearchCityInput = observer(() => {
                     setCitySuggestions([]);
                 }
             }}
-            onChange={(e, value) => cityStore.currentCity = value}
+            onChange={(e, value) => stateStore.currentCity = value}
             renderInput={(params) => 
                 <TextField
                     fullWidth

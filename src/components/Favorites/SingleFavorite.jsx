@@ -3,23 +3,23 @@ import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import { Grid, Paper } from '@material-ui/core';
-import CityStoreContext from '../../stores/CityStore';
+import StateStoreContext from '../../stores/StateStore';
 import { makeStyles } from '@material-ui/core/styles';
 import toastApiClient from "../../ApiClient/ToastApiClient";
 import { UnFavoriteButton } from "../Buttons/UnFavoriteButton";
 
 export const SingleFavorite = observer(({id, cityName}) => {
     const classes = useStyles();
-    const cityStore = useContext(CityStoreContext);
+    const stateStore = useContext(StateStoreContext);
     const [ favCityWeather, setFavCityWeather ] = useState({});
-    const temperatureScale = cityStore.temperatureScale === "celsius" ? "celsius" : "fahrenheit";
+    const temperatureScale = stateStore.temperatureScale === "celsius" ? "celsius" : "fahrenheit";
     useEffect(() => {
         const fetchFavCityWeather = async() => {
             setFavCityWeather(await toastApiClient.getCurrentCityWeather(cityName));
         };
         fetchFavCityWeather();
     }, []);
-    const updateCurrentCity = () => cityStore.currentCity = cityName;
+    const updateCurrentCity = () => stateStore.currentCity = cityName;
     return (
         <Grid item>
             <Link to="/">

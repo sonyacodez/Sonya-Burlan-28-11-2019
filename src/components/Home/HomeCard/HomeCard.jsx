@@ -8,7 +8,7 @@ export const HomeCard = () => {
     return (
         <Grid container spacing={0}>
             <Grid item xs={12}>
-                <Grid container justify="center" spacing={2}>
+                <Grid className={classes.root} container justify="center" spacing={2}>
                     <Paper className={classes.paper}>
                         <CurrentWeather/>
                         <FiveDayForecast/>
@@ -20,8 +20,15 @@ export const HomeCard = () => {
 };
 
 const useStyles = makeStyles(() => ({
+    root: {
+        height: "80vh"
+    },
     paper: {
-        height: 300,
-        width: 500
+        color: "black",
+        height: "50vh",
+        width: "60%",
+        opacity: 0.75,
+        borderRadius: "40px",
+        boxShadow: "5px 5px 30px 7px rgba(10,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22)"
     }
 }));

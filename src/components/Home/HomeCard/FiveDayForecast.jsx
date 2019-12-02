@@ -30,7 +30,7 @@ export const FiveDayForecast = observer(() => {
     return (
         <div className={classes.root}>
             {fiveDayForecast.map((day, index) => (
-                <div className={classes.fiveDayForecast}>
+                <div key={index} className={classes.fiveDayForecast}>
                     <div>{staticData.whichDay(day.date)}</div>
                     <div>
                         <FontAwesomeIcon size="5x" icon={staticData.whichWeatherIcon(day.weatherDescription)}/>

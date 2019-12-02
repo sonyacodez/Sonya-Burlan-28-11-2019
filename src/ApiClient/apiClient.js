@@ -4,7 +4,7 @@ import axios from 'axios'
 class ApiClient {
     constructor() {
         this.urlBase = "https://dataservice.accuweather.com/"
-        this.myAPIkey = "4xF5yjmrtLcEEkPmGZr7eyi93iQLrNAk"; 
+        this.myAPIkey = "1YfKkmecK5npET1GUyGVGIBr1vuYxx1c"; 
         this.accessKey = "2c68386b32d6b46ea4dde87b3753597e29be3b00804ea5b7ed42b91dc9fb2dca";
         /* I know this isn't good practice to commit the API key/accesskey, I'm keeping it here for now for simplicity's sake.*/
     }
@@ -46,7 +46,7 @@ class ApiClient {
     };
 
     getCurrentCityWeatherPhoto = async() => {
-        const cityPhoto = await axios.get(`https://source.unsplash.com/1920x1080/?beautiful+nature+sunrises+sunsets+green`);
+        const cityPhoto = await axios.get(`https://source.unsplash.com/1920x1080/?beautiful+nature+sunrises+sunsets+green+light`);
         return cityPhoto.config.url
     };
 

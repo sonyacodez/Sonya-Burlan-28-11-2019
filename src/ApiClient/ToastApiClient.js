@@ -1,5 +1,6 @@
 import apiClient from './apiClient';
 import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class ToastApiClient {
     searchCityAutoCompleteInput = async(userInput) => {

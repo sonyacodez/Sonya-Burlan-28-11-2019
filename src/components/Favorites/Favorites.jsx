@@ -34,14 +34,4 @@ const useStyles = makeStyles(() => ({
         justifyContent: "space-around",
         flexWrap: "wrap"
     }
-}))
-
-// <Grid container className={classes.root} spacing={2}>
-// <Grid item xs={12}>
-//     <Grid className={classes.cardsList} container justify="center" spacing={2}>
-//         {stateStore.favoriteCities.map((city, index) => (
-//             <SingleFavorite hover={true} key={index} id={index} cityName={city}/>
-//         ))}
-//     </Grid>
-// </Grid>
-// </Grid>
+}));

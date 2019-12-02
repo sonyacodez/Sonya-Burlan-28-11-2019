@@ -49,7 +49,7 @@ export const FiveDayForecast = observer(() => {
 const useStyles = makeStyles(() => ({
     root: {
         display: "grid",
-        gridTemplateColumns: "5fr 5fr 5fr 5fr 5fr",
+        gridTemplateColumns: "repeat(auto-fit, minmax(111px, 1fr))",
         gridRowGap: "1em"
     },
     fiveDayForecast: {

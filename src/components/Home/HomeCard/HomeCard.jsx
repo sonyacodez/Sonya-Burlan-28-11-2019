@@ -18,7 +18,6 @@ export const HomeCard = () => {
 
 const useStyles = makeStyles(() => ({
     root: {
-        display: "grid",
         width: "70vw",
         margin: "0 auto"
     },

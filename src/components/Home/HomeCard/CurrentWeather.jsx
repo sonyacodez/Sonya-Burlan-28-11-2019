@@ -26,7 +26,7 @@ export const CurrentWeather = observer(() => {
     }, [currentCity, stateStore]);
     return (
         <div className={classes.root}>
-            <br></br>
+            <div></div>
             <div className={classes.currentInfo}>
                 <h1>{stateStore.currentCity}</h1>
                 <div>{cityWeather ? staticData.getDate(cityWeather.dateAndTime) : null}</div>
@@ -44,16 +44,16 @@ export const CurrentWeather = observer(() => {
                 <UnFavoriteButton cityName={stateStore.currentCity}/> : 
                 <FavoriteButton cityName={stateStore.currentCity}/>}
             </div>
-            <br></br>
+            <div></div>
         </div>
     );
 });
 
 const useStyles = makeStyles(() => ({
     root: {
-        display: "grid",
-        gridTemplateColumns: " 0.5fr 3fr 2fr 4fr 1fr",
-        justifyContent: "flex-end"
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "space-evenly"
     },
     temperature: {
         fontSize: "12vh",

@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import StateStoreContext from '../../stores/StateStore';

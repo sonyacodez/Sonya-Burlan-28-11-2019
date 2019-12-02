@@ -24,7 +24,6 @@ class ToastApiClient {
             toast.error(`Unable to reach server: ${error}`);
         }
     };
-    //maybe displayError function to prevent repetition
 }
 
 export default new ToastApiClient();

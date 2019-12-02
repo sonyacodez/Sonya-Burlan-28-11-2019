@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { observer } from "mobx-react-lite";
@@ -20,7 +19,7 @@ export const SingleFavorite = observer(({id, cityName}) => {
             setFavCityWeather(await toastApiClient.getCurrentCityWeather(cityName));
         };
         fetchFavCityWeather();
-    }, []);
+    }, [cityName]);
     const updateCurrentCity = () => stateStore.currentCity = cityName;
     return (
         <div>

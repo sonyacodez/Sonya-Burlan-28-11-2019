@@ -8,7 +8,6 @@ import { AppBar, IconButton, makeStyles, Toolbar, Tooltip } from '@material-ui/c
 
 export const Header = observer(() => {
     const stateStore = useContext(StateStoreContext);
-    // let degreeType = stateStore.temperatureScale
     const classes = useStyles()
     return (
         <AppBar className={classes.root}>

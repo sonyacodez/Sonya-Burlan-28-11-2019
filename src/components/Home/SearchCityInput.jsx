@@ -29,6 +29,7 @@ export const SearchCityInput = observer(() => {
                     fullWidth
                     {...params}
                     variant="outlined"
+                    placeholder="Which city's weather would you like to check?"
                     onChange={event=>{
                         const userInput = event.target.value;
                         const sanitized = userInput.replace(/[^a-z 0-9]/gi, "");

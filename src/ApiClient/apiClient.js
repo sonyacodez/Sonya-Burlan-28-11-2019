@@ -3,7 +3,7 @@ import axios from 'axios'
 class ApiClient {
     constructor() {
         this.urlBase = "https://dataservice.accuweather.com/";
-        this.myAPIkey = "7piXiklcmUThM1THayaEtmHnRzmqzbVo";
+        this.myAPIkey = "aLGRpjheVUAII6VsOee7IXm3NBWJsi5k";
         this.GeoAPIKey = "AIzaSyB7bTH7gOg_LUILwwIFYuXSiCwDR1beic8";
         /* I know this isn't good practice to commit the API key/accesskey, I'm keeping it here for now for simplicity's sake.*/
     }

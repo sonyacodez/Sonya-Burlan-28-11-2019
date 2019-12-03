@@ -21,7 +21,7 @@ const useStyles = makeStyles(() => ({
     root: {
         display: "grid",
         height: "90vh",
-        // justifyItems: "center",
+        justifyItems: "space-evenly",
         ['@media (min-width:768px)']: { // eslint-disable-line no-useless-computed-key
             gridTemplateColumns: "1fr 1fr 1fr 1fr"
         },

@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { observer } from "mobx-react-lite";
 import { makeStyles } from '@material-ui/core';
 import StateStoreContext from '../../../stores/StateStore';
-import toastApiClient from '../../../ApiClient/ToastApiClient';
+import toastApiClient from '../../../apiclient/ToastApiClient';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import staticData from '../../../staticData';
 

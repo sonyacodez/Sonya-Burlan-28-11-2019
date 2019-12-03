@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { App } from './App';
 import * as serviceWorker from './serviceWorker';
-import apiClient from './ApiClient/apiClient';
+import apiClient from './apiclient/apiClient';
 import StateStoreContext, { StateStore } from './stores/StateStore';
 
 const stateStore = new StateStore();

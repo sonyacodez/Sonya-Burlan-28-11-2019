@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 import { Paper } from '@material-ui/core';
 import StateStoreContext from '../../stores/StateStore';
 import { makeStyles } from '@material-ui/core/styles';
-import toastApiClient from "../../ApiClient/ToastApiClient";
+import toastApiClient from "../../apiclient/ToastApiClient";
 import { TrashButton } from "../Buttons/TrashButton";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import staticData from '../../staticData';

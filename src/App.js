@@ -1,11 +1,11 @@
 import React, { useEffect, useState} from "react";
 import { observer } from "mobx-react-lite";
-import apiClient from './ApiClient/apiClient';
+import apiClient from './apiclient/apiClient';
 import { Home } from "./components/Home/Home";
 import { ToastContainer } from "react-toastify";
 import { Favorites } from "./components/Favorites/Favorites";
 import { BrowserRouter, Route } from "react-router-dom";
-import { Header } from "../src/components/Header";
+import { Header } from "./components/Header/Header";
 import { makeStyles } from '@material-ui/core';
 
 import "./App.css";

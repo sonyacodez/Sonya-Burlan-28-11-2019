@@ -26,7 +26,6 @@ export const CurrentWeather = observer(() => {
     }, [currentCity, stateStore]);
     return (
         <div className={classes.root}>
-            <div></div>
             <div className={classes.currentInfo}>
                 <h1>{stateStore.currentCity}</h1>
                 <div>{cityWeather ? staticData.getDate(cityWeather.dateAndTime) : null}</div>
@@ -44,7 +43,6 @@ export const CurrentWeather = observer(() => {
                 <UnFavoriteButton cityName={stateStore.currentCity}/> : 
                 <FavoriteButton cityName={stateStore.currentCity}/>}
             </div>
-            <div></div>
         </div>
     );
 });
@@ -59,7 +57,7 @@ const useStyles = makeStyles(() => ({
             flexWrap: "wrap",
             maxWidth: "1200px",
             justifyContent: "space-between",
-            textAlign: "inherit", 
+            // textAlign: "inherit", 
             margin: "auto"
         }
     },
@@ -77,6 +75,11 @@ const useStyles = makeStyles(() => ({
     },
     button: {
         fontSize: "5vw",
-        textAlign: "center"
+        position: "relative",
+        top: "-2vw",
+        right: "3vh",
+        ['@media (min-width:768px)']: { // eslint-disable-line no-useless-computed-key
+            textAlign: "center"
+        }
     }
 }));

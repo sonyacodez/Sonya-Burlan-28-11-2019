@@ -27,7 +27,6 @@ export const FiveDayForecast = observer(() => {
             setCurrentTemperatureScale(stateStore.temperatureScale);
         }
     }, [currentCity, currentTemperatureScale, stateStore.currentCity, stateStore.temperatureScale]);
-    console.error(fiveDayForecast, stateStore.currentCity, currentCity);
     return (
         <div className={classes.root}>
             {fiveDayForecast.map((day, index) => (

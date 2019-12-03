@@ -57,7 +57,7 @@ const useStyles = makeStyles(() => ({
             flexWrap: "wrap",
             maxWidth: "1200px",
             justifyContent: "space-between",
-            // textAlign: "inherit", 
+            textAlign: "inherit", 
             margin: "auto"
         }
     },
@@ -74,12 +74,6 @@ const useStyles = makeStyles(() => ({
         paddingTop: "3vh"
     },
     button: {
-        fontSize: "5vw",
-        position: "relative",
-        top: "-2vw",
-        right: "3vh",
-        ['@media (min-width:768px)']: { // eslint-disable-line no-useless-computed-key
-            textAlign: "center"
-        }
+        fontSize: "5vw"
     }
 }));

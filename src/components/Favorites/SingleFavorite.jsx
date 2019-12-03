@@ -5,7 +5,7 @@ import { Paper } from '@material-ui/core';
 import StateStoreContext from '../../stores/StateStore';
 import { makeStyles } from '@material-ui/core/styles';
 import toastApiClient from "../../ApiClient/ToastApiClient";
-import { UnFavoriteButton } from "../Buttons/UnFavoriteButton";
+import { TrashButton } from "../Buttons/TrashButton";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import staticData from '../../staticData';
 
@@ -33,7 +33,7 @@ export const SingleFavorite = observer(({id, cityName}) => {
                     <div className={classes.temperature}>{favCityWeather[temperatureScale]}°</div>
                 </Link>
                 <div className={classes.button}>
-                    <UnFavoriteButton cityName={cityName}/>
+                    <TrashButton cityName={cityName}/>
                 </div>
             </Paper>
         </div>

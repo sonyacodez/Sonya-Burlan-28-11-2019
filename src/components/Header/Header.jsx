@@ -1,20 +1,20 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 import { observer } from "mobx-react-lite";
-import StateStoreContext from '../../stores/StateStore';
 import { DegreeTypeSwitch } from './DegreeTypeSwitch';
+import { ToggleTheme } from './ToggleTheme';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faHome} from '@fortawesome/free-solid-svg-icons';
 import { AppBar, IconButton, makeStyles, Toolbar, Tooltip } from '@material-ui/core';
 
 export const Header = observer(() => {
-    const stateStore = useContext(StateStoreContext);
-    const classes = useStyles()
+    const classes = useStyles();
     return (
         <AppBar className={classes.root}>
             <Toolbar className={classes.toolbar}>
-                <h3>Weather App</h3>
+                <h3 className={classes.title}>Weather App</h3>
                 <span>
+                    <ToggleTheme/>
                     <DegreeTypeSwitch/>
                     <Tooltip title="Favorites">
                         <IconButton className={classes.iconButton}>
@@ -40,6 +40,11 @@ const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
         display: "flex"
+    },
+    title: {
+        ['@media (max-width:384px)']: { // eslint-disable-line no-useless-computed-key
+            fontSize: "10px"
+        }
     },
     iconButton: {
         size: "medium"

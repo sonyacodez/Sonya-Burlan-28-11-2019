@@ -3,6 +3,7 @@ import { createContext } from 'react';
 import store2 from 'store2';
 
 export class StateStore {
+    @observable currentTheme = "light";
     @observable currentCity = "Tel Aviv";
     @observable temperatureScale = "celsius";
     @observable favoriteCities = store2.get("favoriteCities", []);

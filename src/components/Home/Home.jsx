@@ -17,7 +17,12 @@ const useStyles = makeStyles(() => ({
     root: {
         display: "flex-inline",
         '& .MuiOutlinedInput-root': {
-            backgroundColor: "white",
+            '.lightTheme &': {
+                backgroundColor: "white",
+            },
+            '.darkTheme &': {
+                backgroundColor: "black",
+            },
             padding: 0
         }
     }

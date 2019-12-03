@@ -13,7 +13,7 @@ export const UnFavoriteButton = observer(({cityName}) => {
         <Tooltip title="Remove from Favorites">
             <IconButton className={classes.iconButton}
                     onClick={() => stateStore.deleteFavoriteCity(cityName)}>
-                <FontAwesomeIcon icon={faHeart} color="gray" />
+                <FontAwesomeIcon icon={faHeart} color="red" />
             </IconButton>
         </Tooltip>
     );

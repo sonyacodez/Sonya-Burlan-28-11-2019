@@ -20,10 +20,8 @@ export const Favorites = observer(() => {
 const useStyles = makeStyles(() => ({
     root: {
         display: "grid",
+        gridTemplateColumns: "repeat(auto-fit,minmax(150px, 1fr))",
         height: "90vh",
-        gridTemplateColumns: "5fr 5fr 5fr 5fr",
-        gridTemplateRows: "5fr 5fr",
-        gridRowGap: "1em",
         alignItems: "center"
     },
     cardsList: {

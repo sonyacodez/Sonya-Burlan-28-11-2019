@@ -32,9 +32,9 @@ export const SingleFavorite = observer(({id, cityName}) => {
                     </div>
                     <div className={classes.temperature}>{favCityWeather[temperatureScale]}°</div>
                 </Link>
-                <div className={classes.button}>
+                <span className={classes.button}>
                     <TrashButton cityName={cityName}/>
-                </div>
+                </span>
             </Paper>
         </div>
     );
@@ -65,14 +65,14 @@ const useStyles = makeStyles(() => ({
         textDecoration: "none"
     },
     title: {
-        fontSize: "2.3vw",
+        fontSize: "2.3vh",
         textAlign: "center",
         paddingTop: "1vh",
         paddingBottom: "1vh"
     },
     temperature: {
         textAlign: "center",
-        fontSize: "2.3vw"
+        fontSize: "2.3vh"
     },
     icon: {
         textAlign: "center"

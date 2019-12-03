@@ -12,6 +12,7 @@ const stateStore = new StateStore();
     try {
         stateStore.currentCity = await apiClient.getUserCurrentAddressCity();
     }catch(error){
+        stateStore.currentCity = "Tel Aviv";
         console.error(`Unable to fetch user GeoLocation.`);
     }
 })();

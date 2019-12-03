@@ -38,7 +38,7 @@ export const CurrentWeather = observer(() => {
                 {cityWeather ? (stateStore.temperatureScale === "celsius" ? 
                 cityWeather.celsius : cityWeather.fahrenheit) : null}°
             </div>
-            <div className={classes.button}>
+            <div>
                 {stateStore.favoriteCities.includes(stateStore.currentCity) ?
                 <UnFavoriteButton cityName={stateStore.currentCity}/> : 
                 <FavoriteButton cityName={stateStore.currentCity}/>}
@@ -60,9 +60,6 @@ const useStyles = makeStyles(() => ({
             justifyContent: "space-between",
             textAlign: "left", 
             margin: "auto"
-        },
-        '& .button': {
-            fontSize: "5vw"
         }
     },
     temperature: {
@@ -72,11 +69,9 @@ const useStyles = makeStyles(() => ({
     },
     currentInfo: {
         fontSize: "2.3vh",
+        padding: "0 2vw"
     },
     icon: {
         paddingTop: "3vh"
-    },
-    button: {
-        fontSize: "5vw"
     }
 }));

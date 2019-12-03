@@ -27,10 +27,10 @@ export const FiveDayForecast = observer(() => {
             setCurrentTemperatureScale(stateStore.temperatureScale);
         }
     }, [currentCity, currentTemperatureScale, stateStore.currentCity, stateStore.temperatureScale]);
-    console.error(fiveDayForecast);
+    console.error(fiveDayForecast, stateStore.currentCity, currentCity);
     return (
         <div className={classes.root}>
-            {fiveDayForecast.map((day, index) => (
+            {(fiveDayForecast || []).map((day, index) => (
                 <div key={index} className={classes.fiveDayForecast}>
                     <div>{staticData.whichDay(day.date)}</div>
                     <div>

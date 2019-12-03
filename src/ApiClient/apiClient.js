@@ -5,6 +5,7 @@ class ApiClient {
         this.urlBase = "https://dataservice.accuweather.com/";
         this.myAPIkey = "FLl5nDX04W80jklSsfnYDFTJE7iYbWsQ";
         this.GeoAPIKey = "AIzaSyB7bTH7gOg_LUILwwIFYuXSiCwDR1beic8";
+        this.defaultLocationKey = "215854";
         /* I know this isn't good practice to commit the API key/accesskey, I'm keeping it here for now for simplicity's sake.*/
     }
 
@@ -32,11 +33,11 @@ class ApiClient {
 
     getCurrentCityKey = async(currentCity) => {
         if(!currentCity){
-            return "215854";
+            return this.defaultLocationKey;
         }
         const currentCityInfo = await axios.get(`${this.urlBase}locations/v1/cities/autocomplete?apikey=${this.myAPIkey}&q=${currentCity}`);
         if(!currentCityInfo || !currentCityInfo.data || !currentCityInfo.data[0]){
-            return "215854";
+            return this.defaultLocationKey;
         }
         return currentCityInfo.data[0].Key;
     };

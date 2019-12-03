@@ -52,9 +52,28 @@ export const CurrentWeather = observer(() => {
 const useStyles = makeStyles(() => ({
     root: {
         display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "space-between"
+        flexDirection: "column",
+        justifyContent: "center",
+        ['@media (min-width:768px)']: { // eslint-disable-line no-useless-computed-key
+            flexDirection: "row", 
+            flexWrap: "wrap",
+            maxWidth: "1200px", 
+            margin: "auto"
+        }
     },
+    // ,
+    //     @media only screen and (min-width: 768px){
+    //         .makeStyles-root-148 {
+    //             flex-direction:row, 
+    //             flex-wrap: wrap,
+    //             max-width: 1200px, 
+    //             margin: auto;
+    //         }
+    //     }
+        
+        // display: "flex",
+        // flexWrap: "wrap",
+        // justifyContent: "space-between"
     temperature: {
         fontSize: "12vh",
         textAlign: "end",

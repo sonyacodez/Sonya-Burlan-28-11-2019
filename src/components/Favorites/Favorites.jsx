@@ -20,15 +20,23 @@ export const Favorites = observer(() => {
 const useStyles = makeStyles(() => ({
     root: {
         display: "grid",
-        gridTemplateColumns: "repeat(auto-fit,minmax(150px, 1fr))",
         height: "90vh",
-        alignItems: "center"
+        // justifyItems: "center",
+        ['@media (min-width:768px)']: { // eslint-disable-line no-useless-computed-key
+            gridTemplateColumns: "1fr 1fr 1fr 1fr"
+        },
+        ['@media (max-width:768px) and (min-width: 576px)']: { // eslint-disable-line no-useless-computed-key
+            gridTemplateColumns: "1fr 1fr 1fr"
+        },
+        ['@media (max-width:576px) and (min-width: 384px)']: { // eslint-disable-line no-useless-computed-key
+            gridTemplateColumns: "1fr 1fr"
+        },
+        ['@media (max-width:384px)']: { // eslint-disable-line no-useless-computed-key
+            gridTemplateColumns: "1fr"
+        }
     },
     cardsList: {
         zIndex: 0,
-        width: "100%",
-        display: "grid",
-        justifyContent: "space-around",
-        flexWrap: "wrap"
+        width: "100%"
     }
 }));

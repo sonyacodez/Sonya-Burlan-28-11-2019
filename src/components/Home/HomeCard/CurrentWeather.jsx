@@ -60,6 +60,9 @@ const useStyles = makeStyles(() => ({
             justifyContent: "space-between",
             textAlign: "left", 
             margin: "auto"
+        },
+        '& .button': {
+            fontSize: "5vw"
         }
     },
     temperature: {

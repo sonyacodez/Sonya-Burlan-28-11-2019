@@ -52,12 +52,13 @@ const useStyles = makeStyles(() => ({
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        textAlign: "center",
         ['@media (min-width:768px)']: { // eslint-disable-line no-useless-computed-key
             flexDirection: "row", 
             flexWrap: "wrap",
             maxWidth: "1200px",
             justifyContent: "space-between",
-            textAlign: "inherit", 
+            textAlign: "left", 
             margin: "auto"
         }
     },
@@ -68,7 +69,6 @@ const useStyles = makeStyles(() => ({
     },
     currentInfo: {
         fontSize: "2.3vh",
-        textAlign: "center"
     },
     icon: {
         paddingTop: "3vh"

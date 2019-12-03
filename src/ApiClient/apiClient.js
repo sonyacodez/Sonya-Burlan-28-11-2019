@@ -32,11 +32,11 @@ class ApiClient {
 
     getCurrentCityKey = async(currentCity) => {
         if(!currentCity){
-            return "";
+            return "215854";
         }
         const currentCityInfo = await axios.get(`${this.urlBase}locations/v1/cities/autocomplete?apikey=${this.myAPIkey}&q=${currentCity}`);
         if(!currentCityInfo || !currentCityInfo.data || !currentCityInfo.data[0]){
-            return "";
+            return "215854";
         }
         return currentCityInfo.data[0].Key;
     };

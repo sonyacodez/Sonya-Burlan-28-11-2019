@@ -65,14 +65,14 @@ const useStyles = makeStyles(() => ({
         textDecoration: "none"
     },
     title: {
-        fontSize: "2.3vh",
+        fontSize: "3vh",
         textAlign: "center",
         paddingTop: "1vh",
         paddingBottom: "1vh"
     },
     temperature: {
         textAlign: "center",
-        fontSize: "2.3vh"
+        fontSize: "3vh"
     },
     icon: {
         textAlign: "center"

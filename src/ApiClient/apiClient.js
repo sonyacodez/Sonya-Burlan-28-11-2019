@@ -3,7 +3,7 @@ import axios from 'axios'
 class ApiClient {
     constructor() {
         this.urlBase = "https://dataservice.accuweather.com/";
-        this.myAPIkey = "aLGRpjheVUAII6VsOee7IXm3NBWJsi5k";
+        this.myAPIkey = "aLGRpjheVUAII6VsOee7IXm3NBWJsi5k        ";
         this.GeoAPIKey = "AIzaSyB7bTH7gOg_LUILwwIFYuXSiCwDR1beic8";
         /* I know this isn't good practice to commit the API key/accesskey, I'm keeping it here for now for simplicity's sake.*/
     }
@@ -35,6 +35,9 @@ class ApiClient {
             return "";
         }
         const currentCityInfo = await axios.get(`${this.urlBase}locations/v1/cities/autocomplete?apikey=${this.myAPIkey}&q=${currentCity}`);
+        if(!currentCityInfo || !currentCityInfo.data || !currentCityInfo.data[0]){
+            return "";
+        }
         return currentCityInfo.data[0].Key;
     };
     

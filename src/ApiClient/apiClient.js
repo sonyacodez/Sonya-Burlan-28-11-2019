@@ -35,7 +35,7 @@ class ApiClient {
             return "215854";
         }
         const currentCityInfo = await axios.get(`${this.urlBase}locations/v1/cities/autocomplete?apikey=${this.myAPIkey}&q=${currentCity}`);
-        if(!currentCity || !currentCityInfo || !currentCityInfo.data || !currentCityInfo.data[0]){
+        if(!currentCityInfo || !currentCityInfo.data || !currentCityInfo.data[0]){
             return "215854";
         }
         return currentCityInfo.data[0].Key;

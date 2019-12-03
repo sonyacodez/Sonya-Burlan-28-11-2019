@@ -6,7 +6,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { makeStyles } from '@material-ui/core/styles';
 
-export const UnFavoriteButton = observer(({cityName}) => {
+export const TrashButton = observer(({cityName}) => {
     const classes = useStyles();
     const stateStore = useContext(StateStoreContext);
     return (

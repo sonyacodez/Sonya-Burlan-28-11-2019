@@ -53,34 +53,24 @@ const useStyles = makeStyles(() => ({
     root: {
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
+        alignItems: "center",
         ['@media (min-width:768px)']: { // eslint-disable-line no-useless-computed-key
             flexDirection: "row", 
             flexWrap: "wrap",
-            maxWidth: "1200px", 
+            maxWidth: "1200px",
+            justifyContent: "space-between",
+            textAlign: "inherit", 
             margin: "auto"
         }
     },
-    // ,
-    //     @media only screen and (min-width: 768px){
-    //         .makeStyles-root-148 {
-    //             flex-direction:row, 
-    //             flex-wrap: wrap,
-    //             max-width: 1200px, 
-    //             margin: auto;
-    //         }
-    //     }
-        
-        // display: "flex",
-        // flexWrap: "wrap",
-        // justifyContent: "space-between"
     temperature: {
         fontSize: "12vh",
         textAlign: "end",
         paddingTop: "3vh"
     },
     currentInfo: {
-        fontSize: "2.3vh"
+        fontSize: "2.3vh",
+        textAlign: "center"
     },
     icon: {
         paddingTop: "3vh"

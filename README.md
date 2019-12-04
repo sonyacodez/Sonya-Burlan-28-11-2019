@@ -1,3 +1,7 @@
+---
+permalink: /index.html
+---
+
 ## Weather App
 
 ### Built With:

@@ -22,4 +22,4 @@
 ##### Home Page on Mobile (Light Mode)
 ![alt text](screen_shots/MobileHomePageLight.png "Home Page on Mobile (Light Mode)")
 ##### Favorites Page on Mobile (Dark Mode)
-![alt text](screen_shots/HomePage.png "Favorites Page on Mobile (Dark Mode)")
+![alt text](screen_shots/FavoritesDarkMode.png "Favorites Page on Mobile (Dark Mode)")

@@ -26,7 +26,7 @@ class ApiClient {
                 resolve(city);
             },
             (error) => {
-                reject("Tel Aviv");
+                reject("error");
             });
         });
     };

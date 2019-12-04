@@ -10,12 +10,9 @@ import { ThemeProvider } from '@material-ui/styles';
 import { BrowserRouter, Route } from "react-router-dom";
 import { createMuiTheme } from '@material-ui/core/styles';
 import { Favorites } from "./components/Favorites/Favorites";
-// import { ThemeProvider } from 'styled-components';
-// import { lightTheme, darkTheme } from './globalstyles/theme';
 import "./App.css";
 
 const lightTheme = createMuiTheme();
-
 const darkTheme = createMuiTheme({palette: {type: "dark"}});
 
 export const App = observer(() => {

@@ -16,17 +16,15 @@ export const HomeCard = () => {
     );
 };
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
     root: {
         width: "70vw",
-        margin: "0 auto",
-        color: theme.palette.background.default,
+        margin: "0 auto"
     },
     paper: {
         opacity: 0.75,
         transition: "0.5s",
         borderRadius: "40px",
-        // boxShadow: "5px 5px 30px 7px rgba(255,255,255,1), -5px -5px 30px 7px rgba(255,255,255,1)"
         boxShadow: "5px 5px 30px 7px, -5px -5px 30px 7px"
     },
     divider: {

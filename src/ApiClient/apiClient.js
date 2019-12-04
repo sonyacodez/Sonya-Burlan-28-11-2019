@@ -68,7 +68,7 @@ class ApiClient {
     };
 
     getCurrentCityWeatherPhoto = async() => {
-        const cityPhoto = await axios.get(`https://source.unsplash.com/1920x1080/?+nature+views+europe+countryside+water`);
+        const cityPhoto = await axios.get(`https://source.unsplash.com/1920x1080/?+nature++europe+countryside+mountains`);
         return cityPhoto.config.url;
     };
 }

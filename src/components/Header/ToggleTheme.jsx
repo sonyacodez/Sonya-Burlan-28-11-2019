@@ -8,12 +8,9 @@ import { observer } from 'mobx-react-lite';
 export const ToggleTheme = observer(() => {
     const stateStore = useContext(StateStoreContext);
     const isLight = stateStore.currentTheme === 'light';
-console.log(`isLight: ${isLight}`);
     const togglingTheme = () => {
-console.log(`Before: ${stateStore.currentTheme}`);
         stateStore.currentTheme === 'light' ? 
         stateStore.currentTheme = "dark" : stateStore.currentTheme = "light";
-console.log(`After: ${stateStore.currentTheme}`);
     };
     return (
         <ToggleContainer lightTheme={isLight} onClick={togglingTheme}>
@@ -37,7 +34,7 @@ const ToggleContainer = styled.button`
     position: relative;
     width: 3rem;
     height: 2rem;
-    top: 0.77vh;
+    top: 0.60vh;
 
     svg {
         height: auto;

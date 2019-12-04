@@ -40,7 +40,7 @@ export const SingleFavorite = observer(({id, cityName}) => {
     );
 });
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
     card: {
         display: "grid",
         position: "relative",
@@ -54,14 +54,14 @@ const useStyles = makeStyles(() => ({
             boxShadow: "5px 5px 30px 15px rgba(0,0,0,0.25), -5px -5px 30px 15px rgba(0,0,0,0.22)"
         },
         cursor: "pointer",
-        transition: "0.4s",
+        transition: "0.5s",
         opacity: 0.75
     },
     cardInfo: {
         display: "grid",
         gridTemplateRows: "0.5fr 1.5fr 1fr",
         alignItems: "center",
-        color: "black",
+        color: theme.palette.text.primary,
         textDecoration: "none"
     },
     title: {

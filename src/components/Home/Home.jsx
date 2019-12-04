@@ -13,17 +13,18 @@ export const Home = () => {
     );
 };
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
     root: {
         display: "flex-inline",
         '& .MuiOutlinedInput-root': {
-            '.lightTheme &': {
-                backgroundColor: "white",
-            },
-            '.darkTheme &': {
-                backgroundColor: "black",
-            },
+            // '.lightTheme &': {
+            //     backgroundColor: "white",
+            // },
+            // '.darkTheme &': {
+            //     backgroundColor: "black",
+            // },
+            backgroundColor: theme.palette.background.default,
             padding: 0
         }
     }
-}));
+}), {withTheme: true});

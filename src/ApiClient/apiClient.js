@@ -25,7 +25,7 @@ class ApiClient {
                 const city = address.data.results[0].formatted_address.split(",")[1].trim("");
                 resolve(city);
             },
-            (error)=>{
+            (error) => {
                 reject(error);
             });
         });
@@ -68,9 +68,9 @@ class ApiClient {
     };
 
     getCurrentCityWeatherPhoto = async() => {
-        const cityPhoto = await axios.get(`https://source.unsplash.com/1920x1080/?+nature+europe+countryside+water`);
-        return cityPhoto.config.url
+        const cityPhoto = await axios.get(`https://source.unsplash.com/1920x1080/?+nature+views+europe+countryside+water`);
+        return cityPhoto.config.url;
     };
 }
 
-export default new ApiClient()
+export default new ApiClient();

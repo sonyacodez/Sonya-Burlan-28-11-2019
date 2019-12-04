@@ -1,20 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import { observer } from "mobx-react-lite";
+import { ToggleTheme } from './themebutton/ToggleTheme';
+import StateStoreContext from '../../stores/StateStore';
 import { DegreeTypeSwitch } from './DegreeTypeSwitch';
-import { ToggleTheme } from './ToggleTheme';
+import { buttonLight, buttonDark } from './themebutton/theme';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faHome} from '@fortawesome/free-solid-svg-icons';
+import { ThemeProvider as ToggleButtonTheme } from 'styled-components';
 import { AppBar, IconButton, makeStyles, Toolbar, Tooltip } from '@material-ui/core';
 
 export const Header = observer(() => {
     const classes = useStyles();
+    const stateStore = useContext(StateStoreContext);
     return (
         <AppBar className={classes.root}>
             <Toolbar className={classes.toolbar}>
                 <h3 className={classes.title}>Weather App</h3>
                 <span>
-                    <ToggleTheme/>
+                    <ToggleButtonTheme theme={stateStore.currentTheme === 'light' ? buttonLight : buttonDark}>
+                        <ToggleTheme/>
+                    </ToggleButtonTheme>
                     <DegreeTypeSwitch/>
                     <Tooltip title="Favorites">
                         <IconButton className={classes.iconButton}>

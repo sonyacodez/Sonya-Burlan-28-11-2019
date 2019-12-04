@@ -22,9 +22,6 @@ class StaticData {
     }
     
     whichWeatherIcon = text => {
-        if(!text){
-            return faSun;
-        }
         return text.toLowerCase().includes("cloud") ? faCloudSun :
         text.toLowerCase().includes("rain") ? faCloudShowersHeavy :
         text.toLowerCase().includes("showers") ? faCloudShowersHeavy :
@@ -32,7 +29,7 @@ class StaticData {
         text.toLowerCase().includes("snow") ? faSnowflake :
         text.toLowerCase().includes("sun") ? faSun :
         text.toLowerCase().includes("wind") ? faWind :
-        null;
+        faSun;
     }
 }
 

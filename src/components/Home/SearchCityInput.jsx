@@ -56,8 +56,8 @@ const useStyles = makeStyles(() => ({
         flexGrow: 1,
         height: "5%",
         margin: "0 auto",
-        paddingTop: "8%",
+        paddingTop: "10vh",
         transition: "0.5s",
-        paddingBottom: "5%"
+        paddingBottom: "10vh"
     }
 }));

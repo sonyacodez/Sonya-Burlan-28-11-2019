@@ -7,6 +7,7 @@
 - Unsplash API
 - AccuWeather API
 - Axios NPM Package
+- Store2 NPM Package
 - Google Geolocation API
 - Font Awesome NPM Package
 - Styled Components NPM Package
